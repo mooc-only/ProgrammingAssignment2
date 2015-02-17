@@ -19,8 +19,9 @@ makeCacheMatrix <- function(x = matrix()) {
          getinverse = getinverse)
 }
 
-## cacheSolve is a function wrapper for solve() function used in "cached matrix"
-## object. 
+## cacheSolve is a function wrapper for solve() function used on "cached matrix"
+## object. It computes and returns the inverse of the matrix if there is no cached 
+## data available, otherwise returns the precomputed inverse (i.e.: cached inverse)
 ## WARNING: The simplicity of the statement let some bugs to happen. 
 ## e.g.: x$setinverse( some_matrix  ) shouldn't be able to be called from any 
 ## context, it is needed something like 'protected' methods
