@@ -1,7 +1,9 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Thanks to lexical scope feature and list subsetting operator it is able to 
+## simulate an "object" with internal memory and methods
 
-## Matrix object's constructor (resembling factory pattern)
+## makeCacheMatrix is a matrix's constructor, resembling the factory pattern
+## used in object oriented programming paradigm. 
+## It takes a conventional R's matrix and return a "cached matrix" object
 
 makeCacheMatrix <- function(x = matrix()) {
     inverse <- NULL
@@ -17,7 +19,11 @@ makeCacheMatrix <- function(x = matrix()) {
          getinverse = getinverse)
 }
 
-## Cached Solve function for special matrix 
+## cacheSolve is a function wrapper for solve() function used in "cached matrix"
+## object. 
+## WARNING: The simplicity of the statement let some bugs to happen. 
+## e.g.: x$setinverse( some_matrix  ) shouldn't be able to be called from any 
+## context, it is needed something like 'protected' methods
 
 cacheSolve <- function(x, ...) {
     m <- x$getinverse()
